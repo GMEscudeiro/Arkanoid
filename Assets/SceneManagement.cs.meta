@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: f12a9398baa324343a4a1201055ab7ba
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - blueBrick: {fileID: 1249136086598671302, guid: 4001fe0e6ebc2e2439e1e203581feef0, type: 3}
+  - redBrick: {fileID: 1127299256270828481, guid: 31bef2ffea1b01a4580bddcc428ad973, type: 3}
+  - greenBrick: {fileID: 5563893540581533828, guid: 3d6be8f758fb11a4caa53b5efbdeb64d, type: 3}
+  - greyBrick: {fileID: 8161042157761846195, guid: 335725ebce9f12247a4b50cf0a2288fe, type: 3}
+  - purpleBrick: {fileID: 4564653495867233387, guid: 33f278f5e2514684e946e4f100292e13, type: 3}
+  - yellowBrick: {fileID: 8238796292003924726, guid: a4d339a18e7873849b4fe5e60842f012, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
