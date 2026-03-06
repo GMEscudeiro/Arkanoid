@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ball = GameObject.FindGameObjectWithTag("Ball");
-        spriteRenderer = ball.GetComponent<SpriteRenderer>();
+        if(ball){
+            spriteRenderer = ball.GetComponent<SpriteRenderer>();
+        }
     }
 
     public void die(){
@@ -31,12 +33,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 ballSize = spriteRenderer.bounds.size;
-        Vector3 ballPos = ball.transform.position;
+        if(ball){
+            Vector3 ballSize = spriteRenderer.bounds.size;
+            Vector3 ballPos = ball.transform.position;
 
-        if(ballPos.y + ballSize.y/2 <= -5){
-            die();
+            if(ballPos.y + ballSize.y/2 <= -5){
+                die();
+            }
         }
-        
     }
 }

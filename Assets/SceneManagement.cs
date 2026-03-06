@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
+using UnityEngine.UI;
 
 public class SceneManagement : MonoBehaviour
 {
@@ -21,12 +23,18 @@ public class SceneManagement : MonoBehaviour
     public int totalBricks = 0;
     public int level = 1;
 
+    public VideoPlayer videoPlayer;
+    public RawImage displayVideo;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         scene = SceneManager.GetActiveScene();
+        if(displayVideo != null){
+            displayVideo.gameObject.SetActive(false);
+        }
         sceneName = scene.name;
-        if(sceneName != "MainMenu" || sceneName != "GoodEnding" || sceneName != "BadEnding"){
+        if(sceneName != "MainMenu" && sceneName != "GoodEnding" && sceneName != "BadEnding"){
             int.TryParse(sceneName.Split("_")[1], out level);
             createLevel();
         }    
@@ -48,11 +56,20 @@ public class SceneManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Space) && (sceneName == "MainMenu" || sceneName == "GoodEnding" || sceneName == "BadEnding")){
-            SceneManager.LoadScene("Level_1");
-            level = 1;
+        if(Input.GetKey(KeyCode.Space) && (sceneName == "MainMenu")) {
+            displayVideo.gameObject.SetActive(true);
+            videoPlayer.Play();
+            videoPlayer.loopPointReached += (vp) => {
+                SceneManager.LoadScene("Level_1");
+                level = 1;
+                displayVideo.gameObject.SetActive(false);
+            };
+        }
+        if(Input.GetKey(KeyCode.Space) && (sceneName == "GoodEnding" || sceneName== "BadEnding")) {
+           SceneManager.LoadScene("MainMenu");
         }
     }
+
 
     void createLevel(){
         createRows();
